@@ -21,6 +21,7 @@ namespace Unity3DObfuscator
         public MainForm()
         {
             InitializeComponent();
+            StringEncrypyionTypeCB.SelectedIndex = 1;
         }
         private void Protect() //The 'protect' function.
         {
@@ -325,6 +326,16 @@ namespace Unity3DObfuscator
                 StatusLbl.Text = "Canceled!";
                 StatusLbl.ForeColor = Color.Red;
             }
+        }
+
+        private void MainTheme_Click(object sender, EventArgs e) //Ignore this.
+        {
+
+        }
+
+        private void StringEncrypyionTypeCB_SelectedIndexChanged(object sender, EventArgs e) //Changes the string encryption level when the index of the combo box changes.
+        {
+            MainClass.Settings.StringEncryptionLevel = StringEncrypyionTypeCB.SelectedIndex;
         }
     }
 }

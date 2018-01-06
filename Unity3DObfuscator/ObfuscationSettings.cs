@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace Unity3DObfuscator
 {
-   //All the obfuscation settings.
+    //All the obfuscation settings.
     public class ObfuscationSettings
     {
         private string assemblyPath = string.Empty;
@@ -24,8 +24,9 @@ namespace Unity3DObfuscator
         private bool antiTampering = false;
         private bool randomName = true;
         private bool emptyName = false;
-        public bool IsAssemblyDotNet => GetIsAssemblyDotNet(); 
-        public bool AssemblyExists => GetAssemblyExists(); 
+        private int stringEncryptionLevel = 1;
+        public bool IsAssemblyDotNet => GetIsAssemblyDotNet();
+        public bool AssemblyExists => GetAssemblyExists();
         public string AssemblyPath { get => assemblyPath; set => assemblyPath = value; }
         public string ContainingFolder { get => containingFolder; set => containingFolder = value; }
         public bool AntiILDasm { get => antiILDasm; set => antiILDasm = value; }
@@ -38,6 +39,7 @@ namespace Unity3DObfuscator
         public bool AntiTampering { get => antiTampering; set => antiTampering = value; }
         public bool RandomName { get => randomName; set => randomName = value; }
         public bool EmptyName { get => emptyName; set => emptyName = value; }
+        public int StringEncryptionLevel { get => stringEncryptionLevel; set => stringEncryptionLevel = value; }
 
         public void Restart(Form currentForm) //Restats the application.
         {
@@ -46,7 +48,7 @@ namespace Unity3DObfuscator
         }
         public void Reset(Control.ControlCollection settingsControls) //Resets all the settings.
         {
-            foreach(Control c in settingsControls)
+            foreach (Control c in settingsControls)
             {
                 if (c is CheckBox cb)
                 {
@@ -93,6 +95,30 @@ namespace Unity3DObfuscator
         private bool GetAssemblyExists()
         {
             return (File.Exists(assemblyPath));
+        }
+        public Type GetStringDencryptionType() //Get the string dencryption type.
+        {
+            switch (stringEncryptionLevel)
+            {
+                case 1:
+                    return typeof(StringDecryptionHelpers.Normal);
+
+                case 2:
+                    return typeof(StringDecryptionHelpers.Strong);
+            }
+            return typeof(StringDecryptionHelpers.Weak);
+        }
+        public string GetStringDencryptionMethod() //Gets the method that decrypts the string.
+        {
+            switch (stringEncryptionLevel)
+            {
+                case 1:
+                    return "c";
+
+                case 2:
+                    return "d";
+            }
+            return "b";
         }
     }
 }

@@ -22,10 +22,6 @@ namespace Unity3DObfuscator
         //List of strings in the assembly
         private static readonly List<string> strings = new List<string>(new string[0]);
 
-
-        //The strings that the string encryption functions uses. Should not be encrypted!
-        private static readonly List<string> stringDecryptionHelperStrings = new List<string>(new string[] { "sec08m52lk323j209di2j99unity", "sec924801294838", "@1C2c3D4e8F6g7F8", "\0" });
-
         //The properties are just return functions of every list.
         public static List<string> UnityFunctions => unityFunctions;
 
@@ -36,7 +32,5 @@ namespace Unity3DObfuscator
         public static List<string> ExcludedStrings => excludedStrings;
 
         public static List<string> Strings => strings;
-
-        public static List<string> StringDecryptionHelperStrings => stringDecryptionHelperStrings;
     }
 }

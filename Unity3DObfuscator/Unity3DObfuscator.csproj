@@ -88,6 +88,7 @@
     <Compile Include="GlobalStrings.cs" />
     <Compile Include="RenamingClass.cs" />
     <Compile Include="StringDecryptionHelper.cs" />
+    <Compile Include="StringEncoding.cs" />
     <Compile Include="StringEncryptionClass.cs" />
     <Compile Include="Watermarking.cs" />
     <EmbeddedResource Include="ExcludeStringsForm.resx">

@@ -30,6 +30,8 @@
         {
             this.MainTheme = new FormSkin.clsNeoBuxTheme();
             this.ExitBtn = new FormSkin.clsButtonGrey();
+            this.CancelBtn = new System.Windows.Forms.Button();
+            this.HelpBtn = new FormSkin.clsButtonOrange();
             this.sLabel = new System.Windows.Forms.Label();
             this.StatusLbl = new System.Windows.Forms.Label();
             this.ResetBtn = new FormSkin.clsButtonPurple();
@@ -56,8 +58,8 @@
             this.RenameMethodsCB = new System.Windows.Forms.CheckBox();
             this.RenameNamespacesCB = new System.Windows.Forms.CheckBox();
             this.bottomTxt = new System.Windows.Forms.TextBox();
-            this.HelpBtn = new FormSkin.clsButtonOrange();
-            this.CancelBtn = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.StringEncrypyionTypeCB = new System.Windows.Forms.ComboBox();
             this.MainTheme.SuspendLayout();
             this.SettingsBox.SuspendLayout();
             this.SuspendLayout();
@@ -90,20 +92,21 @@
             this.MainTheme.Name = "MainTheme";
             this.MainTheme.NoRounding = false;
             this.MainTheme.Sizable = false;
-            this.MainTheme.Size = new System.Drawing.Size(364, 321);
+            this.MainTheme.Size = new System.Drawing.Size(364, 350);
             this.MainTheme.SmartBounds = true;
             this.MainTheme.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.MainTheme.TabIndex = 0;
             this.MainTheme.Text = "Unity3D Obfuscator";
             this.MainTheme.TransparencyKey = System.Drawing.Color.Fuchsia;
             this.MainTheme.Transparent = false;
+            this.MainTheme.Click += new System.EventHandler(this.MainTheme_Click);
             // 
             // ExitBtn
             // 
             this.ExitBtn.Customization = "9fX1/6mpqf8=";
             this.ExitBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ExitBtn.Image = null;
-            this.ExitBtn.Location = new System.Drawing.Point(272, 251);
+            this.ExitBtn.Location = new System.Drawing.Point(272, 268);
             this.ExitBtn.Name = "ExitBtn";
             this.ExitBtn.NoRounding = false;
             this.ExitBtn.Size = new System.Drawing.Size(87, 28);
@@ -112,12 +115,39 @@
             this.ExitBtn.Transparent = false;
             this.ExitBtn.Click += new System.EventHandler(this.ExitBtn_Click);
             // 
+            // CancelBtn
+            // 
+            this.CancelBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CancelBtn.ForeColor = System.Drawing.Color.Red;
+            this.CancelBtn.Location = new System.Drawing.Point(235, 313);
+            this.CancelBtn.Name = "CancelBtn";
+            this.CancelBtn.Size = new System.Drawing.Size(129, 34);
+            this.CancelBtn.TabIndex = 19;
+            this.CancelBtn.Text = "Cancel";
+            this.CancelBtn.UseVisualStyleBackColor = true;
+            this.CancelBtn.Visible = false;
+            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            // 
+            // HelpBtn
+            // 
+            this.HelpBtn.Customization = "9fX1/6mpqf8=";
+            this.HelpBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HelpBtn.Image = null;
+            this.HelpBtn.Location = new System.Drawing.Point(271, 133);
+            this.HelpBtn.Name = "HelpBtn";
+            this.HelpBtn.NoRounding = false;
+            this.HelpBtn.Size = new System.Drawing.Size(87, 28);
+            this.HelpBtn.TabIndex = 18;
+            this.HelpBtn.Text = "Help";
+            this.HelpBtn.Transparent = false;
+            this.HelpBtn.Click += new System.EventHandler(this.HelpBtn_Click);
+            // 
             // sLabel
             // 
             this.sLabel.AutoSize = true;
             this.sLabel.BackColor = System.Drawing.Color.Gray;
             this.sLabel.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.sLabel.Location = new System.Drawing.Point(4, 291);
+            this.sLabel.Location = new System.Drawing.Point(4, 319);
             this.sLabel.Name = "sLabel";
             this.sLabel.Size = new System.Drawing.Size(65, 25);
             this.sLabel.TabIndex = 1;
@@ -128,7 +158,7 @@
             this.StatusLbl.AutoSize = true;
             this.StatusLbl.BackColor = System.Drawing.Color.Gray;
             this.StatusLbl.Font = new System.Drawing.Font("Segoe UI Semibold", 13F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.StatusLbl.Location = new System.Drawing.Point(64, 291);
+            this.StatusLbl.Location = new System.Drawing.Point(64, 319);
             this.StatusLbl.Name = "StatusLbl";
             this.StatusLbl.Size = new System.Drawing.Size(41, 25);
             this.StatusLbl.TabIndex = 13;
@@ -139,7 +169,7 @@
             this.ResetBtn.Customization = "9fX1/6mpqf8=";
             this.ResetBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ResetBtn.Image = null;
-            this.ResetBtn.Location = new System.Drawing.Point(271, 184);
+            this.ResetBtn.Location = new System.Drawing.Point(271, 201);
             this.ResetBtn.Name = "ResetBtn";
             this.ResetBtn.NoRounding = false;
             this.ResetBtn.Size = new System.Drawing.Size(87, 28);
@@ -153,7 +183,7 @@
             this.AboutBtn.Customization = "9fX1/6mpqf8=";
             this.AboutBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.AboutBtn.Image = null;
-            this.AboutBtn.Location = new System.Drawing.Point(271, 87);
+            this.AboutBtn.Location = new System.Drawing.Point(271, 104);
             this.AboutBtn.Name = "AboutBtn";
             this.AboutBtn.NoRounding = false;
             this.AboutBtn.Size = new System.Drawing.Size(87, 23);
@@ -181,7 +211,7 @@
             this.RestartBtn_.Customization = "9fX1/6mpqf8=";
             this.RestartBtn_.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.RestartBtn_.Image = null;
-            this.RestartBtn_.Location = new System.Drawing.Point(272, 218);
+            this.RestartBtn_.Location = new System.Drawing.Point(272, 235);
             this.RestartBtn_.Name = "RestartBtn_";
             this.RestartBtn_.NoRounding = false;
             this.RestartBtn_.Size = new System.Drawing.Size(87, 28);
@@ -229,7 +259,7 @@
             this.ProtectBtn.Customization = "9fX1/6mpqf8=";
             this.ProtectBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ProtectBtn.Image = null;
-            this.ProtectBtn.Location = new System.Drawing.Point(271, 149);
+            this.ProtectBtn.Location = new System.Drawing.Point(271, 166);
             this.ProtectBtn.Name = "ProtectBtn";
             this.ProtectBtn.NoRounding = false;
             this.ProtectBtn.Size = new System.Drawing.Size(87, 28);
@@ -240,6 +270,8 @@
             // 
             // SettingsBox
             // 
+            this.SettingsBox.Controls.Add(this.StringEncrypyionTypeCB);
+            this.SettingsBox.Controls.Add(this.label3);
             this.SettingsBox.Controls.Add(this.ExcludeStringsBtn);
             this.SettingsBox.Controls.Add(this.label2);
             this.SettingsBox.Controls.Add(this.StringEncnryptionCB);
@@ -254,9 +286,9 @@
             this.SettingsBox.Controls.Add(this.RenamePropertiesCB);
             this.SettingsBox.Controls.Add(this.RenameMethodsCB);
             this.SettingsBox.Controls.Add(this.RenameNamespacesCB);
-            this.SettingsBox.Location = new System.Drawing.Point(3, 82);
+            this.SettingsBox.Location = new System.Drawing.Point(3, 80);
             this.SettingsBox.Name = "SettingsBox";
-            this.SettingsBox.Size = new System.Drawing.Size(262, 202);
+            this.SettingsBox.Size = new System.Drawing.Size(262, 233);
             this.SettingsBox.TabIndex = 3;
             this.SettingsBox.TabStop = false;
             this.SettingsBox.Text = "Settings";
@@ -278,7 +310,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(-1, 127);
+            this.label2.Location = new System.Drawing.Point(-3, 126);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(92, 15);
             this.label2.TabIndex = 18;
@@ -311,7 +343,7 @@
             this.RandomNameRB.AutoSize = true;
             this.RandomNameRB.BackColor = System.Drawing.Color.Transparent;
             this.RandomNameRB.Checked = true;
-            this.RandomNameRB.Location = new System.Drawing.Point(1, 167);
+            this.RandomNameRB.Location = new System.Drawing.Point(-1, 166);
             this.RandomNameRB.Name = "RandomNameRB";
             this.RandomNameRB.Size = new System.Drawing.Size(105, 19);
             this.RandomNameRB.TabIndex = 9;
@@ -323,7 +355,7 @@
             // EmptyNameRB
             // 
             this.EmptyNameRB.AutoSize = true;
-            this.EmptyNameRB.Location = new System.Drawing.Point(1, 145);
+            this.EmptyNameRB.Location = new System.Drawing.Point(-1, 144);
             this.EmptyNameRB.Name = "EmptyNameRB";
             this.EmptyNameRB.Size = new System.Drawing.Size(94, 19);
             this.EmptyNameRB.TabIndex = 8;
@@ -430,45 +462,41 @@
             this.bottomTxt.BackColor = System.Drawing.Color.Gray;
             this.bottomTxt.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.bottomTxt.Enabled = false;
-            this.bottomTxt.Location = new System.Drawing.Point(0, 284);
+            this.bottomTxt.Location = new System.Drawing.Point(0, 313);
             this.bottomTxt.Multiline = true;
             this.bottomTxt.Name = "bottomTxt";
             this.bottomTxt.ReadOnly = true;
-            this.bottomTxt.Size = new System.Drawing.Size(364, 37);
+            this.bottomTxt.Size = new System.Drawing.Size(364, 35);
             this.bottomTxt.TabIndex = 14;
             // 
-            // HelpBtn
+            // label3
             // 
-            this.HelpBtn.Customization = "9fX1/6mpqf8=";
-            this.HelpBtn.Font = new System.Drawing.Font("Verdana", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.HelpBtn.Image = null;
-            this.HelpBtn.Location = new System.Drawing.Point(271, 116);
-            this.HelpBtn.Name = "HelpBtn";
-            this.HelpBtn.NoRounding = false;
-            this.HelpBtn.Size = new System.Drawing.Size(87, 28);
-            this.HelpBtn.TabIndex = 18;
-            this.HelpBtn.Text = "Help";
-            this.HelpBtn.Transparent = false;
-            this.HelpBtn.Click += new System.EventHandler(this.HelpBtn_Click);
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(1, 209);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(129, 15);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "String Encryption Type:";
             // 
-            // CancelBtn
+            // StringEncrypyionTypeCB
             // 
-            this.CancelBtn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CancelBtn.ForeColor = System.Drawing.Color.Red;
-            this.CancelBtn.Location = new System.Drawing.Point(272, 285);
-            this.CancelBtn.Name = "CancelBtn";
-            this.CancelBtn.Size = new System.Drawing.Size(92, 34);
-            this.CancelBtn.TabIndex = 19;
-            this.CancelBtn.Text = "Cancel";
-            this.CancelBtn.UseVisualStyleBackColor = true;
-            this.CancelBtn.Visible = false;
-            this.CancelBtn.Click += new System.EventHandler(this.CancelBtn_Click);
+            this.StringEncrypyionTypeCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.StringEncrypyionTypeCB.FormattingEnabled = true;
+            this.StringEncrypyionTypeCB.Items.AddRange(new object[] {
+            "Weak",
+            "Normal",
+            "Strong"});
+            this.StringEncrypyionTypeCB.Location = new System.Drawing.Point(136, 205);
+            this.StringEncrypyionTypeCB.Name = "StringEncrypyionTypeCB";
+            this.StringEncrypyionTypeCB.Size = new System.Drawing.Size(120, 23);
+            this.StringEncrypyionTypeCB.TabIndex = 20;
+            this.StringEncrypyionTypeCB.SelectedIndexChanged += new System.EventHandler(this.StringEncrypyionTypeCB_SelectedIndexChanged);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(364, 321);
+            this.ClientSize = new System.Drawing.Size(364, 350);
             this.Controls.Add(this.MainTheme);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
@@ -515,6 +543,8 @@
         private FormSkin.clsButtonGrey ExcludeStringsBtn;
         private FormSkin.clsButtonOrange HelpBtn;
         private System.Windows.Forms.Button CancelBtn;
+        private System.Windows.Forms.ComboBox StringEncrypyionTypeCB;
+        private System.Windows.Forms.Label label3;
     }
 }
 

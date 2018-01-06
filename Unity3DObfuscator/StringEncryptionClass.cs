@@ -40,11 +40,11 @@ namespace Unity3DObfuscator
                         if (instr[i].OpCode == OpCodes.Ldstr)
                         {
                             var originalStr = instr[i].Operand as string;
-                            if (Exclusion.ExcludedStrings.Contains(originalStr) || Exclusion.StringDecryptionHelperStrings.Contains(originalStr))
+                            if (Exclusion.ExcludedStrings.Contains(originalStr))
                             {
                                 continue;
                             }
-                            var encodedStr = EncryptString(originalStr);
+                            var encodedStr = StringEncoding.EncryptString(originalStr);
                             instr[i].Operand = encodedStr;
                             instr.Insert(i + 1, Instruction.Create(OpCodes.Call, _injectedMethodDef));
                             method.Body.SimplifyBranches();
@@ -56,11 +56,11 @@ namespace Unity3DObfuscator
         }
         private static void InjectClass(ModuleDef module) //Injects the StringDecryptionHelper functions in to the assembly.
         {
-            ModuleDefMD typeModule = ModuleDefMD.Load(typeof(StringDecryptionHelper).Module);
-            TypeDef typeDef = typeModule.ResolveTypeDef(MDToken.ToRID(typeof(StringDecryptionHelper).MetadataToken));
+            Type type = MainClass.Settings.GetStringDencryptionType();
+            ModuleDefMD typeModule = ModuleDefMD.Load(type.Module);
+            TypeDef typeDef = typeModule.ResolveTypeDef(MDToken.ToRID(type.MetadataToken));
             IEnumerable<IDnlibDef> members = InjectHelper.Inject(typeDef, module.GlobalType, module);
-            _injectedMethodDef = (MethodDef)members.Single(method => method.Name == "D0");
-
+            _injectedMethodDef = (MethodDef)members.Single(method => method.Name == MainClass.Settings.GetStringDencryptionMethod());
             foreach (MethodDef md in module.GlobalType.Methods)
             {
                 if (md.Name == ".ctor")
@@ -69,34 +69,6 @@ namespace Unity3DObfuscator
                     break;
                 }
             }
-        }
-
-        private string EncryptString(string plainText) //The function that encodes the string
-        {
-            string PasswordHash = "sec08m52lk323j209di2j99unity";
-            string SaltKey = "sec924801294838";
-            string VIKey = "@1C2c3D4e8F6g7F8";
-
-            byte[] plainTextBytes = Encoding.UTF8.GetBytes(plainText);
-
-            byte[] keyBytes = new Rfc2898DeriveBytes(PasswordHash, Encoding.ASCII.GetBytes(SaltKey)).GetBytes(256 / 8);
-            var symmetricKey = new RijndaelManaged() { Mode = CipherMode.CBC, Padding = PaddingMode.Zeros };
-            var encryptor = symmetricKey.CreateEncryptor(keyBytes, Encoding.ASCII.GetBytes(VIKey));
-
-            byte[] cipherTextBytes;
-
-            using (var memoryStream = new MemoryStream())
-            {
-                using (var cryptoStream = new CryptoStream(memoryStream, encryptor, CryptoStreamMode.Write))
-                {
-                    cryptoStream.Write(plainTextBytes, 0, plainTextBytes.Length);
-                    cryptoStream.FlushFinalBlock();
-                    cipherTextBytes = memoryStream.ToArray();
-                    cryptoStream.Close();
-                }
-                memoryStream.Close();
-            }
-            return Convert.ToBase64String(cipherTextBytes);
         }
     }
 }

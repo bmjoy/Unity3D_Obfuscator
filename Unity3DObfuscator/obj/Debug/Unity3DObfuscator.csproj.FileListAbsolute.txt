@@ -1,0 +1,13 @@
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\bin\Debug\Unity3DObfuscator.exe.config
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\bin\Debug\Unity3DObfuscator.exe
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\bin\Debug\Unity3DObfuscator.pdb
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.csprojResolveAssemblyReference.cache
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.Properties.Resources.resources
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.csproj.GenerateResource.Cache
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.exe
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.pdb
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.MainForm.resources
+c:\users\vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\bin\Debug\dnlib.dll
+C:\Users\Vasilis\Documents\Visual Studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.ExcludeTypesForm.resources
+C:\Users\Vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.ExcludeStringsForm.resources
+C:\Users\Vasilis\documents\visual studio 2017\Projects\Unity3DObfuscator\Unity3DObfuscator\obj\Debug\Unity3DObfuscator.HelpForm.resources
